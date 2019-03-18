@@ -1,20 +1,28 @@
 package com.cherry
 
-import io.ktor.application.*
-import io.ktor.response.*
-import io.ktor.request.*
-import io.ktor.routing.*
-import io.ktor.http.*
-import io.ktor.html.*
-import kotlinx.html.*
-import kotlinx.css.*
-import freemarker.cache.*
-import io.ktor.freemarker.*
-import io.ktor.content.*
-import io.ktor.http.content.*
+import freemarker.cache.ClassTemplateLoader
+import freemarker.cache.TemplateLoader
+import io.ktor.application.Application
+import io.ktor.application.ApplicationCall
+import io.ktor.application.call
+import io.ktor.application.install
+import io.ktor.auth.Authentication
+import io.ktor.features.StatusPages
+import io.ktor.freemarker.FreeMarker
+import io.ktor.freemarker.FreeMarkerContent
+import io.ktor.html.respondHtml
+import io.ktor.http.ContentType
+import io.ktor.http.HttpStatusCode
+import io.ktor.http.content.resources
+import io.ktor.http.content.static
+import io.ktor.response.respond
+import io.ktor.response.respondText
+import io.ktor.routing.get
+import io.ktor.routing.routing
 import io.ktor.sessions.*
-import io.ktor.features.*
-import io.ktor.auth.*
+import kotlinx.css.*
+import kotlinx.html.*
+import kotlin.collections.set
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -22,7 +30,7 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
     install(FreeMarker) {
-        templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
+        templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates") as TemplateLoader?
     }
 
     install(Sessions) {
@@ -36,7 +44,7 @@ fun Application.module(testing: Boolean = false) {
 
     routing {
         get("/") {
-            call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
+            call.respond(FreeMarkerContent("index.ftl", mapOf("data" to IndexData(listOf(1, 2, 3))), ""))
         }
 
         get("/html-dsl") {

@@ -1,5 +1,8 @@
 <#-- @ftlvariable name="data" type="com.cherry.IndexData" -->
 <html>
+<head>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
     <body>
         <ul>
         <#list data.items as item>
