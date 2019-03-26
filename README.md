@@ -14,5 +14,8 @@
 | Gradle  | 5.2.1  |
 
 ### Tasks
-- [ ] Basic structure
-- [ ] this is a complete item
+- [x] Basic structure
+- [ ] Add front/ back modules with separate gradle files
+- [ ] Add add react to app
+- [ ] Add CRUD
+- [ ] Add authorization
