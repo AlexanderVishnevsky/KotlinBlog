@@ -1,5 +1,6 @@
 # Kotlin Blog App
 
-* [Introduction](/docs/Introduction.md)
-* [Tasks](/docs/Tasks.md)
-* [Technologies](/docs/Technologies.md)
+* [Introduction](docs/introduction/)
+* [Tasks](docs/introduction/tasks.md)
+* [Technologies](docs/introduction/technologies.md)
+
