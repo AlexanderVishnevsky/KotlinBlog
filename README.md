@@ -1,6 +1,8 @@
+---
+description: Full stack application made with Kotlin
+---
+
 # Kotlin Blog App
 
-* [Introduction](docs/introduction/)
-* [Tasks](docs/introduction/tasks.md)
-* [Technologies](docs/introduction/technologies.md)
+#### Please, visit [https://jdm-cherry.gitbook.io/kotlin-blog-app/](https://jdm-cherry.gitbook.io/kotlin-blog-app/) to see whole documentation on this project.
 
