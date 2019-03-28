@@ -5,4 +5,6 @@
   * [Introduction](docs/introduction/README.md)
     * [List of Technologies](docs/introduction/technologies.md)
     * [Tasks](docs/introduction/tasks.md)
-  * [backend](backend/backend.md)
+  * [Backend](docs/backend/README.md)
+    * [1. Configuring project](docs/backend/1.-configuring-project.md)
+
