@@ -8,4 +8,5 @@
   * [Backend](docs/backend/README.md)
     * [1. Configuring project](docs/backend/1.-configuring-project.md)
     * [2. Database](docs/backend/2.-database.md)
+    * [3. Model](docs/backend/3.-model.md)
 
