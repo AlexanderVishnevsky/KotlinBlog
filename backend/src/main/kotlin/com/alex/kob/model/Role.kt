@@ -6,14 +6,13 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "roles")
-class Role(name: RoleName) {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
+data class Role(
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Long?,
 
-    @Enumerated(EnumType.STRING)
-    @NaturalId
-    @Column(length = 60)
-    var name: RoleName? = name
-
-}
+        @Enumerated(EnumType.STRING)
+        @NaturalId
+        @Column(length = 60)
+        var name: RoleName?
+)
