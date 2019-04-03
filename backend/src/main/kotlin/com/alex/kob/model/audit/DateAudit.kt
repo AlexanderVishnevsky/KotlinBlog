@@ -19,5 +19,4 @@ abstract class DateAudit : Serializable {
 
     @LastModifiedDate
     var updatedAt: Instant? = null
-
 }

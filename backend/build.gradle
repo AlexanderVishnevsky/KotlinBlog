@@ -12,9 +12,14 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
+	jcenter()
 	mavenCentral()
 	maven { url 'https://repo.spring.io/snapshot' }
 	maven { url 'https://repo.spring.io/milestone' }
+}
+
+configurations {
+	ktlint
 }
 
 dependencies {
@@ -29,6 +34,25 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.8'
+	ktlint "com.github.shyiko:ktlint:0.31.0"
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+	description = "Check Kotlin code style."
+	main = "com.github.shyiko.ktlint.Main"
+	classpath = configurations.ktlint
+	args "src/**/*.kt"
+	// to generate report in checkstyle format prepend following args:
+	// "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
+	// see https://github.com/shyiko/ktlint#usage for more    
+}
+check.dependsOn ktlint
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+	description = "Fix Kotlin code style deviations."
+	main = "com.github.shyiko.ktlint.Main"
+	classpath = configurations.ktlint
+	args "-F", "src/**/*.kt"
 }
 
 compileKotlin {

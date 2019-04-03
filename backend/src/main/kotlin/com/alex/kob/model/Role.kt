@@ -7,12 +7,12 @@ import javax.persistence.*
 @Entity
 @Table(name = "roles")
 data class Role(
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long?,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long?,
 
-        @Enumerated(EnumType.STRING)
-        @NaturalId
-        @Column(length = 60)
-        var name: RoleName?
+    @Enumerated(EnumType.STRING)
+    @NaturalId
+    @Column(length = 60)
+    var name: RoleName?
 )
