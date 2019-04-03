@@ -2,7 +2,14 @@ package com.alex.kob.model
 
 import com.alex.kob.enum.RoleName
 import org.hibernate.annotations.NaturalId
-import javax.persistence.*
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+import javax.persistence.Table
 
 @Entity
 @Table(name = "roles")
