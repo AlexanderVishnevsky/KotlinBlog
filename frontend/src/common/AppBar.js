@@ -21,6 +21,7 @@ import LanguageIcon from "@material-ui/icons/Language"
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
+import Logout from "./Logout"
 // import {i18n, withNamespaces} from '../i18n'
 
 /**
@@ -42,8 +43,6 @@ class MenuAppBar extends React.Component {
             anchorEl: null,
         }
     };
-
-
 
     handleClickOpen = () => {
         this.setState({open: true});
@@ -86,11 +85,11 @@ class MenuAppBar extends React.Component {
                             <MenuIcon/>
                         </IconButton>
                         <Typography variant="h6" color="inherit" style={{flexGrow: 1}}>
-                          BTC
+                          Kotlin blog
                         </Typography>
                         {this.props.session && (
                             <React.Fragment>
-                                {/*<Logout {...this.props}/>*/}
+                               <Logout {...this.props}/>
                                 <div>
                                     <IconButton
                                         aria-owns={open ? 'menu-appbar' : undefined}
