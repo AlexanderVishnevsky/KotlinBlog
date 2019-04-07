@@ -1,8 +1,8 @@
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
-import AppBar from "../common/AppBar";
-import Login from "../common/Login";
+import AppBar from "../common/AppBar/AppBar";
+import RoutingPath from "../common/Routing/RoutingPath";
 import withRoot from '../withRoot';
 
 const styles = theme => ({
@@ -29,7 +29,7 @@ class App extends React.Component {
                     <AppBar/>
                 </div>
                 <div className="container">
-                    <Login/>
+                    <RoutingPath/>
                 </div>
             </div>
         );

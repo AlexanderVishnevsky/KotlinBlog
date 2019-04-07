@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+import Button from "@material-ui/core/Button/index";
 import ArrowBack from "@material-ui/icons/ExitToApp";
 //import { i18n, Link, withNamespaces } from '../i18n';
 
@@ -36,7 +36,7 @@ import ArrowBack from "@material-ui/icons/ExitToApp";
 
 
     render() {
-        const { t } = this.props;
+
         return (
             <div>
                 <Button
@@ -47,7 +47,7 @@ import ArrowBack from "@material-ui/icons/ExitToApp";
                         //this.logout();
                     }}
                 >
-                    {t('logout')}
+                    logout
                     &nbsp;
                     <ArrowBack/>
                 </Button>
@@ -56,4 +56,4 @@ import ArrowBack from "@material-ui/icons/ExitToApp";
     }
 }
 
-export default (Logout);
+export default Logout;

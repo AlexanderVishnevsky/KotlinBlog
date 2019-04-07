@@ -1,33 +1,34 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+import AppBar from '@material-ui/core/AppBar/index';
+import Toolbar from '@material-ui/core/Toolbar/index';
+import Typography from '@material-ui/core/Typography/index';
+import IconButton from '@material-ui/core/IconButton/index';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Button from "@material-ui/core/Button";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import Dialog from '@material-ui/core/Dialog/index';
+import DialogActions from '@material-ui/core/DialogActions/index';
+import DialogContent from '@material-ui/core/DialogContent/index';
+import DialogContentText from '@material-ui/core/DialogContentText/index';
+import DialogTitle from '@material-ui/core/DialogTitle/index';
+import Button from "@material-ui/core/Button/index";
+import Select from "@material-ui/core/Select/index";
+import MenuItem from "@material-ui/core/MenuItem/index";
+import Menu from "@material-ui/core/Menu/index";
+import ListItemIcon from "@material-ui/core/ListItemIcon/index";
+import ListItemText from "@material-ui/core/ListItemText/index";
 import InfoIcon from "@material-ui/icons/Info"
 import LanguageIcon from "@material-ui/icons/Language"
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Input from "@material-ui/core/Input";
-import Logout from "./Logout"
+import FormControl from "@material-ui/core/FormControl/index";
+import InputLabel from "@material-ui/core/InputLabel/index";
+import Input from "@material-ui/core/Input/index";
+import Logout from "../Access/Logout"
+import KotlinIcon  from './favicon.ico';
 // import {i18n, withNamespaces} from '../i18n'
 
 /**
  * Класс, предназначенный для отрисовки верхней панели приложения;
  * Отображает Login/Logout и профиль пользователя в зависимости от состояния;
- * Настройки оформления панели задаются в компоненте {@link createPageContext};
+ * Настройки оформления панели задаются в компоненте {@link withRoot};
  * Более подробно о компоненте AppBar:
  * @link https://material-ui.com/api/app-bar/
  */
@@ -82,8 +83,9 @@ class MenuAppBar extends React.Component {
                             marginLeft: -12,
                             marginRight: 20
                         }}>
-                            <MenuIcon/>
+                            <img src={KotlinIcon} alt="KotlinIcon" style={{width: "30px", height: "30px"}}/>
                         </IconButton>
+
                         <Typography variant="h6" color="inherit" style={{flexGrow: 1}}>
                           Kotlin blog
                         </Typography>
@@ -185,4 +187,4 @@ class MenuAppBar extends React.Component {
     }
 }
 
-export default (MenuAppBar);
+export default MenuAppBar;

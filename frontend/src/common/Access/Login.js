@@ -1,11 +1,11 @@
-import Button from "@material-ui/core/Button";
+import Button from "@material-ui/core/Button/index";
 import React from "react";
-import TextField from "@material-ui/core/TextField";
-import Paper from "@material-ui/core/Paper";
-import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from "@material-ui/core/TextField/index";
+import Paper from "@material-ui/core/Paper/index";
+import InputAdornment from '@material-ui/core/InputAdornment/index';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import PasswordCircle from '@material-ui/icons/LockRounded';
-import FormControl from "@material-ui/core/FormControl";
+import FormControl from "@material-ui/core/FormControl/index";
 //import {i18n, Link, withNamespaces} from '../i18n';
 
 
@@ -166,4 +166,4 @@ class Login extends React.Component {
     }
 }
 
-export default (Login);
+export default Login;
