@@ -1,5 +1,3 @@
-import {Button} from "@material-ui/core";
-import CardActions from "@material-ui/core/CardActions";
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -10,6 +8,7 @@ import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 import green from '@material-ui/core/colors/green';
+import {Link} from "react-router-dom";
 import PostPage from "./PostPage";
 
 const styles = theme => ({
@@ -31,20 +30,7 @@ const styles = theme => ({
 class FabButton extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            addPost: false,
-            scroll: 'paper',
-        }
     }
-
-    //TODO: add authorization check
-    handleClickAddPost = scroll => () => {
-        this.setState({ addPost: true, scroll });
-    };
-
-    handleClosePost = () => {
-        this.setState({ addPost: false });
-    };
 
     render() {
         const { classes, theme } = this.props;
@@ -84,16 +70,11 @@ class FabButton extends React.Component {
                         }}
                         unmountOnExit
                     >
-                        <Fab className={fab.className} color={fab.color} onClick={this.handleClickAddPost('paper')}>
+                        <Fab className={fab.className} color={fab.color} component={Link} to="/post/add">
                             {fab.icon}
                         </Fab>
                     </Zoom>
                 ))}
-                <PostPage
-                    addPost={this.state.addPost}
-                    closePost={this.handleClosePost}
-                    scroll={this.state.scroll}
-                />
             </div>
         );
     }
