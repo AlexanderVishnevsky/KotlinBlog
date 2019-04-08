@@ -4,6 +4,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import TextField from "@material-ui/core/TextField";
 import * as React from "react";
 
 class PostPage extends React.Component{
@@ -17,47 +18,28 @@ class PostPage extends React.Component{
                 open={this.props.addPost}
                 onClose={this.props.closePost}
                 scroll={this.props.scrollPage}
+                fullWidth={true}
                 aria-labelledby="scroll-dialog-title"
             >
-                <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
+                <DialogTitle id="scroll-dialog-title">   <TextField
+                    autoFocus
+                    margin="dense"
+                    id="Title"
+                    label="Title"
+                    variant='outlined'
+                    fullWidth
+                /></DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
-                        facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum
-                        at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus
-                        sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum
-                        nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur
-                        et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Cras
-                        mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-                        egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                        lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla
-                        sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                        Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis
-                        consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-                        egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                        lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla
-                        sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                        Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis
-                        consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-                        egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                        lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla
-                        sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                        Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis
-                        consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-                        egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                        lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla
-                        sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                        Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis
-                        consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-                        egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                        lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla
-                        sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                        Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="Body"
+                            label="Body"
+                            variant='outlined'
+                            fullWidth
+                            multiline
+                        />
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

@@ -27,6 +27,7 @@ const styles = theme => ({
     },
 });
 
+//TODO: add state check of CRUD operation.
 class FabButton extends React.Component {
     constructor(props) {
         super(props);
@@ -36,6 +37,7 @@ class FabButton extends React.Component {
         }
     }
 
+    //TODO: add authorization check
     handleClickAddPost = scroll => () => {
         this.setState({ addPost: true, scroll });
     };
