@@ -1,6 +1,5 @@
 package com.alex.kob.model
 
-import com.alex.kob.enum.RoleName
 import org.hibernate.annotations.NaturalId
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -16,10 +15,10 @@ import javax.persistence.Table
 data class Role(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long?,
+    var id: Long,
 
     @Enumerated(EnumType.STRING)
     @NaturalId
     @Column(length = 60)
-    var name: RoleName?
+    var roleName: String? = null
 )
