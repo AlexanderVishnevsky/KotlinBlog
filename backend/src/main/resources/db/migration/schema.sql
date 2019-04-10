@@ -14,9 +14,9 @@ CREATE TABLE `users` (
 
 CREATE TABLE `roles` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) NOT NULL,
+  `roleName` varchar(60) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `uk_roles_name` (`name`)
+  UNIQUE KEY `uk_roles_name` (`roleName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 

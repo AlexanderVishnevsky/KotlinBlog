@@ -17,52 +17,52 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import java.io.IOException
-import java.util.*
+import java.util.Date
 import javax.servlet.FilterChain
 import javax.servlet.ServletException
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 class JWTAuthenticationFilter(private val _authenticationManager: AuthenticationManager) :
-  UsernamePasswordAuthenticationFilter() {
+        UsernamePasswordAuthenticationFilter() {
 
-  @Throws(AuthenticationException::class)
-  override fun attemptAuthentication(
-    req: HttpServletRequest,
-    res: HttpServletResponse?
-  ): Authentication {
-    return try {
-      val creds = ObjectMapper()
-        .readValue(req.inputStream, com.alex.kob.model.User::class.java)
+    @Throws(AuthenticationException::class)
+    override fun attemptAuthentication(
+        req: HttpServletRequest,
+        res: HttpServletResponse?
+    ): Authentication {
+        return try {
+            val creds = ObjectMapper()
+                    .readValue(req.inputStream, com.alex.kob.model.User::class.java)
 
-      _authenticationManager.authenticate(
-        UsernamePasswordAuthenticationToken(
-          creds.username,
-          creds.password,
-          ArrayList<GrantedAuthority>()
-        )
-      )
-    } catch (e: IOException) {
-      throw AuthenticationServiceException(e.message)
+            _authenticationManager.authenticate(
+                    UsernamePasswordAuthenticationToken(
+                            creds.username,
+                            creds.password,
+                            ArrayList<GrantedAuthority>()
+                    )
+            )
+        } catch (e: IOException) {
+            throw AuthenticationServiceException(e.message)
+        }
     }
-  }
 
-  @Throws(IOException::class, ServletException::class)
-  override fun successfulAuthentication(
-    req: HttpServletRequest,
-    res: HttpServletResponse,
-    chain: FilterChain?,
-    auth: Authentication
-  ) {
-    val claims: MutableList<String> = mutableListOf()
-    auth.authorities!!.forEach { a -> claims.add(a.toString()) }
+    @Throws(IOException::class, ServletException::class)
+    override fun successfulAuthentication(
+        req: HttpServletRequest,
+        res: HttpServletResponse,
+        chain: FilterChain?,
+        auth: Authentication
+    ) {
+        val claims: MutableList<String> = mutableListOf()
+        auth.authorities!!.forEach { a -> claims.add(a.toString()) }
 
-    val token = Jwts.builder()
-      .setSubject((auth.principal as User).username)
-      .claim("auth", claims)
-      .setExpiration(Date(System.currentTimeMillis() + EXPIRATION_TIME))
-      .signWith(Keys.hmacShaKeyFor(SECRET.toByteArray()), SignatureAlgorithm.HS512)
-      .compact()
-    res.addHeader(HEADER_STRING, TOKEN_PREFIX + token)
-  }
+        val token = Jwts.builder()
+                .setSubject((auth.principal as User).username)
+                .claim("auth", claims)
+                .setExpiration(Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .signWith(Keys.hmacShaKeyFor(SECRET.toByteArray()), SignatureAlgorithm.HS512)
+                .compact()
+        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token)
+    }
 }

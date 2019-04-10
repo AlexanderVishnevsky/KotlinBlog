@@ -17,23 +17,25 @@ import javax.persistence.UniqueConstraint
 @Entity
 @Table(name = "users", uniqueConstraints = [UniqueConstraint(columnNames = ["username"]), UniqueConstraint(columnNames = ["email"])])
 data class User(
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long,
 
-        @Column(name = "username")
-        var username: String? = null,
+    @Column(name = "name")
+    var name: String? = null,
 
-        @Column(name = "password")
+    @Column(name = "username")
+    var username: String? = null,
 
-        var password: String? = null,
+    @NaturalId
+    @Column(name = "email")
+    var email: String? = null,
 
-        @NaturalId
-        @Column(name = "first_name")
-        var email: String? = null,
+    @Column(name = "password")
+    var password: String? = null,
 
-        @ManyToMany(fetch = FetchType.LAZY)
-        @JoinTable(name = "user_roles", joinColumns = [JoinColumn(name = "user_id")], inverseJoinColumns = [JoinColumn(name = "role_id")])
-        var roles: Collection<Role>? = null
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles", joinColumns = [JoinColumn(name = "user_id")], inverseJoinColumns = [JoinColumn(name = "role_id")])
+    var roles: Collection<Role>? = null
 
 ) : DateAudit()
