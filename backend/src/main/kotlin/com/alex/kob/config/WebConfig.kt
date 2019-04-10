@@ -44,7 +44,7 @@ class WebConfig(
                 .permitAll()
                 .antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/api/polls/**", "/api/users/**")
+                .antMatchers(HttpMethod.GET, "/api/posts**", "/api/users/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
