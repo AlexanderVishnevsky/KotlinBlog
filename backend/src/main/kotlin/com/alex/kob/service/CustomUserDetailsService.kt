@@ -1,4 +1,4 @@
-package com.alex.kob.security
+package com.alex.kob.service
 
 import com.alex.kob.repository.UserRepository
 import org.springframework.security.core.GrantedAuthority

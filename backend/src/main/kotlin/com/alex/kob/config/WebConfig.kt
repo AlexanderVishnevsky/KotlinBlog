@@ -1,4 +1,4 @@
-import com.alex.kob.security.CustomUserDetailsService
+import com.alex.kob.service.CustomUserDetailsService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
