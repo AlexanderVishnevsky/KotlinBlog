@@ -2,9 +2,9 @@
 
 * [x] Basic structure
 * [x] Develop database
-* [ ] Add JWT auth
-* [ ] Add front/ back modules with separate gradle files
-* [ ] Add frontend React module
+* [ ] \[ In progress \] Add JWT auth
+* [x] Add front/ back modules with separate gradle files
+* [x] Add frontend React module
 * [ ] Add CRUD
 
 
