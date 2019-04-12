@@ -2,47 +2,40 @@ package com.alex.kob.model
 
 import com.alex.kob.model.audit.DateAudit
 import org.hibernate.annotations.NaturalId
-
+import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.FetchType
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.JoinTable
+import javax.persistence.ManyToMany
 import javax.persistence.Table
 import javax.persistence.UniqueConstraint
-import javax.persistence.Id
-import javax.persistence.GenerationType
-import javax.persistence.GeneratedValue
-import javax.persistence.ManyToMany
-import javax.persistence.FetchType
-import javax.persistence.JoinTable
-import javax.persistence.JoinColumn
-import javax.validation.constraints.Email
-import javax.validation.constraints.NotBlank
-import javax.validation.constraints.Size
 
 @Entity
 @Table(name = "users", uniqueConstraints = [UniqueConstraint(columnNames = ["username"]), UniqueConstraint(columnNames = ["email"])])
 data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    val id: Long,
 
-    @NotBlank
-    @Size(max = 40)
-    var name: String?,
+    @Column(name = "name")
+    var name: String? = null,
 
-    @NotBlank
-    @Size(max = 15)
-    var username: String?,
+    @Column(name = "username")
+    var username: String? = null,
 
     @NaturalId
-    @NotBlank
-    @Size(max = 40)
-    @Email
-    var email: String?,
+    @Column(name = "email")
+    var email: String? = null,
 
-    @NotBlank
-    @Size(max = 100)
-    var password: String?,
+    @Column(name = "password")
+    var password: String? = null,
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = [JoinColumn(name = "user_id")], inverseJoinColumns = [JoinColumn(name = "role_id")])
-    var roles: Set<Role> = HashSet()
+    var roles: Collection<Role>? = null
+
 ) : DateAudit()
