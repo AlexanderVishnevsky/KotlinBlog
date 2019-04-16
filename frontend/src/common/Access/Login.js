@@ -6,66 +6,31 @@ import InputAdornment from '@material-ui/core/InputAdornment/index';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import PasswordCircle from '@material-ui/icons/LockRounded';
 import FormControl from "@material-ui/core/FormControl/index";
-//import {i18n, Link, withNamespaces} from '../i18n';
+import {ACCESS_TOKEN} from "../util";
+import { login } from '../util/APIUtils';
 
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            login: '',
-            password: ''
-        };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    handleSubmit() {
+                const loginRequest = Object.assign({});
+                login(loginRequest)
+                    .then(response => {
+                        localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+                        this.props.onLogin();
+                    }).catch(error => {
+                    if(error.status === 401) {
+                       alert('Your Username or Password is incorrect. Please try again!');
 
-    // /**
-    //  * GraphQL login mutation
-    //  */
-    // login() {
-    //     //debugger
-    //     let enqueueSnackbar = this.props.enqueueSnackbar;
-    //     let {t} = this.props;
-    //     return this.props.apolloClient.mutate({
-    //         mutation: gql`
-    //             mutation {
-    //                 createSession
-    //             }
-    //         `
-    //     })
-    //     .then(async (result) => {
-    //         if (result) {
-    //             // Сессия создана - переходим на страницу с которой зашли на Login
-    //             sessionStorage.clear();
-    //             await this.props.apolloClient.resetStore().then(() => {
-    //                 let session_token = result.data.createSession;
-    //                 let redirect_url = decodeURIComponent(Router.query.returnPage);
-    //                 if (redirect_url.indexOf("?") < 0) redirect_url = redirect_url + "?";
-    //                 else redirect_url = redirect_url + "&";
-    //                 redirect_url = redirect_url + "sessionId=" + session_token;
-    //                 //Уведомление об успешной операции
-    //                 enqueueSnackbar(t("success session"), {
-    //                     variant: "success",
-    //                     action: <Button size="small" color="inherit"><Clear color="inherit"/></Button>
-    //                 });
-    //                 Router.push(redirect_url);
-    //             });
-    //             return null;
-    //         }
-    //     })
-    //     .catch((error) => {
-    //         let msg;
-    //         //Уведомление об ошибке
-    //         console.log(JSON.stringify(error));
-    //         if (error.networkError.result) msg = error.networkError.result.errors[0].message;
-    //         else if (error.message) msg = error.message;
-    //         enqueueSnackbar(t("error session") + ":" + msg, {
-    //             variant: "error",
-    //             action: <Button size="small" color="inherit"><Clear color="inherit"/></Button>,
-    //         });
-    //     });
-    //
-    // }
+                    } else {
+                        alert('Sorry! Something went wrong. Please try again!');
+                    }
+                });
+            }
 
     render() {
         return (
@@ -104,7 +69,7 @@ class Login extends React.Component {
                             padding: "30px 0",
                             borderRadius: "5px"
                         }}>
-                            loginButton
+                            login
                         </div>
                         <FormControl fullWidth>
 
@@ -113,9 +78,9 @@ class Login extends React.Component {
                                 style={{marginTop: "30%"}}
                                 name="login"
                                 placeholder="Login"
-                                onChange={(input) => {
-                                    this.state.login = input.target.value
-                                }}
+                                // onChange={(input) => {
+                                //     this.state.login = input.target.value
+                                // }}
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
@@ -128,9 +93,9 @@ class Login extends React.Component {
                             <TextField
                                 name="password"
                                 placeholder="Password"
-                                onChange={(input) => {
-                                    this.state.password = input.target.value
-                                }}
+                                // onChange={(input) => {
+                                //     this.state.password = input.target.value
+                                // }}
                                 type="password"
                                 InputProps={{
                                     startAdornment: (
@@ -149,13 +114,10 @@ class Login extends React.Component {
                                 onClick={e => {
                                     e.preventDefault();
                                     e.stopPropagation();
-                                    let session = {user: {name: this.state.login}};
-                                    sessionStorage.setItem("session", JSON.stringify(session));
-                                    sessionStorage.setItem("session_password", this.state.password);
-                                    this.login();
+                                    this.handleSubmit();
                                 }}
                             >
-                                loginButton
+                                login
                             </Button>
                             <br/>
                         </FormControl>

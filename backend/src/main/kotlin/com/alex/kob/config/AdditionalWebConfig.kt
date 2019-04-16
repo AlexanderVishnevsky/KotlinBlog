@@ -1,14 +1,15 @@
-package osahner.config
+ package osahner.config
 
-import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
-import org.springframework.web.cors.CorsConfiguration
-import org.springframework.web.cors.CorsConfigurationSource
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
+ import org.springframework.context.annotation.Bean
+ import org.springframework.context.annotation.Configuration
+ import org.springframework.web.cors.CorsConfiguration
+ import org.springframework.web.cors.CorsConfigurationSource
+ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
+ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
-@Configuration
-class AdditionalWebConfig : WebMvcConfigurer {
+ @Deprecated("old security")
+ @Configuration
+ class AdditionalWebConfig : WebMvcConfigurer {
     @Bean
         fun corsConfigurationSource(): CorsConfigurationSource {
             val configuration = CorsConfiguration()
@@ -32,4 +33,4 @@ class AdditionalWebConfig : WebMvcConfigurer {
     source.registerCorsConfiguration("/**", configuration)
     return source
             }
-}
+ }

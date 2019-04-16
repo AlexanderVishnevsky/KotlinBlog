@@ -10,7 +10,7 @@ const RoutingPath = () => (
         <Switch>
             <Route exact path='/' component={FeedPage}/>
             <Route path='/post/add' component={PostPage}/>
-            <Route path='/login' component={Login}/>
+            <Route path='/api/login' component={Login}/>
             <Route path='/logout' component={Logout}/>
         </Switch>
     </main>

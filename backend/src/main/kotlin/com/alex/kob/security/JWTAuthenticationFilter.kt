@@ -1,29 +1,31 @@
-package osahner.security
+ package osahner.security
 
-import com.alex.kob.config.SecurityConstants.EXPIRATION_TIME
-import com.alex.kob.config.SecurityConstants.HEADER_STRING
-import com.alex.kob.config.SecurityConstants.SECRET
-import com.alex.kob.config.SecurityConstants.TOKEN_PREFIX
-import com.fasterxml.jackson.databind.ObjectMapper
-import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.SignatureAlgorithm
-import io.jsonwebtoken.security.Keys
-import org.springframework.security.authentication.AuthenticationManager
-import org.springframework.security.authentication.AuthenticationServiceException
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.core.Authentication
-import org.springframework.security.core.AuthenticationException
-import org.springframework.security.core.GrantedAuthority
-import org.springframework.security.core.userdetails.User
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
-import java.io.IOException
-import java.util.Date
-import javax.servlet.FilterChain
-import javax.servlet.ServletException
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
+ import com.alex.kob.config.SecurityConstants.EXPIRATION_TIME
+ import com.alex.kob.config.SecurityConstants.HEADER_STRING
+ import com.alex.kob.config.SecurityConstants.SECRET
+ import com.alex.kob.config.SecurityConstants.TOKEN_PREFIX
+ import com.fasterxml.jackson.databind.ObjectMapper
+ import io.jsonwebtoken.Jwts
+ import io.jsonwebtoken.SignatureAlgorithm
+ import io.jsonwebtoken.security.Keys
+ import org.springframework.security.authentication.AuthenticationManager
+ import org.springframework.security.authentication.AuthenticationServiceException
+ import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+ import org.springframework.security.core.Authentication
+ import org.springframework.security.core.AuthenticationException
+ import org.springframework.security.core.GrantedAuthority
+ import org.springframework.security.core.userdetails.User
+ import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+ import java.io.IOException
+ import java.util.Date
+ import javax.servlet.FilterChain
+ import javax.servlet.ServletException
+ import javax.servlet.http.HttpServletRequest
+ import javax.servlet.http.HttpServletResponse
+ import kotlin.collections.ArrayList
 
-class JWTAuthenticationFilter(private val _authenticationManager: AuthenticationManager) :
+ @Deprecated("old security")
+ class JWTAuthenticationFilter(private val _authenticationManager: AuthenticationManager) :
         UsernamePasswordAuthenticationFilter() {
 
     @Throws(AuthenticationException::class)
@@ -65,4 +67,4 @@ class JWTAuthenticationFilter(private val _authenticationManager: Authentication
                 .compact()
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + token)
     }
-}
+ }

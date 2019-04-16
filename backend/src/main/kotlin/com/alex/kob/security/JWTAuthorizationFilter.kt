@@ -1,22 +1,23 @@
-import com.alex.kob.config.SecurityConstants.HEADER_STRING
-import com.alex.kob.config.SecurityConstants.SECRET
-import com.alex.kob.config.SecurityConstants.TOKEN_PREFIX
-import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.security.Keys
-import org.slf4j.LoggerFactory
-import org.springframework.security.authentication.AuthenticationManager
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.core.GrantedAuthority
-import org.springframework.security.core.authority.SimpleGrantedAuthority
-import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
-import java.io.IOException
-import javax.servlet.FilterChain
-import javax.servlet.ServletException
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
+ import com.alex.kob.config.SecurityConstants.HEADER_STRING
+ import com.alex.kob.config.SecurityConstants.SECRET
+ import com.alex.kob.config.SecurityConstants.TOKEN_PREFIX
+ import io.jsonwebtoken.Jwts
+ import io.jsonwebtoken.security.Keys
+ import org.slf4j.LoggerFactory
+ import org.springframework.security.authentication.AuthenticationManager
+ import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+ import org.springframework.security.core.GrantedAuthority
+ import org.springframework.security.core.authority.SimpleGrantedAuthority
+ import org.springframework.security.core.context.SecurityContextHolder
+ import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
+ import java.io.IOException
+ import javax.servlet.FilterChain
+ import javax.servlet.ServletException
+ import javax.servlet.http.HttpServletRequest
+ import javax.servlet.http.HttpServletResponse
 
-class JWTAuthorizationFilter(authManager: AuthenticationManager) : BasicAuthenticationFilter(authManager) {
+ @Deprecated("old security")
+ class JWTAuthorizationFilter(authManager: AuthenticationManager) : BasicAuthenticationFilter(authManager) {
     private var log = LoggerFactory.getLogger(JWTAuthorizationFilter::class.java)
 
     @Throws(IOException::class, ServletException::class)
@@ -51,4 +52,4 @@ class JWTAuthorizationFilter(authManager: AuthenticationManager) : BasicAuthenti
             return null
         }
     }
-}
+ }

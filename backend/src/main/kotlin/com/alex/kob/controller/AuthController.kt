@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.security.Principal
 
 @RestController
-@RequestMapping("/api/auth/")
+@RequestMapping("/api")
 class AuthController @Autowired
 constructor(private val userRepository: UserRepository) {
 
@@ -21,10 +21,10 @@ constructor(private val userRepository: UserRepository) {
     @PreAuthorize("hasAuthority('ADMIN')")
     fun helloRestrictedWorld() = "Test message"
 
-    @GetMapping("/user/")
+    @GetMapping("/user")
     fun test(principal: Principal?) = principal?.name ?: "You are not logged in"
 
-    @PostMapping("/user/register")
+    @PostMapping("user/register")
     fun register(@RequestBody user: User): ResponseEntity<*> { // You should hash users' passwords
         userRepository.save(User(username = user.username, password = user.password, id = user.id))
         return ResponseEntity.ok("created")
